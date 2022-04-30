@@ -15,6 +15,7 @@
 
         <script>
             function handleFile(file) {
+                            document.getElementById('photosphere').innerHTML='';
                             const reader = new FileReader();
                             reader.addEventListener('load', () => {
                                             new PhotoSphereViewer.Viewer({
