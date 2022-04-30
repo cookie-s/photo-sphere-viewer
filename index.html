@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+
+        <input type="file" id="file" accept="image/*" onchange="handleFile(this.files[0])">
+        <img draggable="true">
+        <div id="photosphere" style="width: 100vw; height: 100vh;"></div>
+
+        <script>
+            function handleFile(file) {
+                            const reader = new FileReader();
+                            reader.addEventListener('load', () => {
+                                            new PhotoSphereViewer.Viewer({
+                                                            panorama: reader.result,
+                                                            container: 'photosphere',
+                                                            touchmoveTwoFingers: true,
+                                                        });
+                                        });
+                            reader.readAsDataURL(file);
+                        };
+        </script>
+    </body>
+</html>
